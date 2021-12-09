@@ -1200,6 +1200,17 @@ ul.link-list li {
     display: block; }
 
 .img-block {
-  display: block;
-  max-width: 100%;
-  margin: 0 auto; }
+    display: block;
+    max-width: 100%;
+    margin: 0 auto; }
+
+.img-block-left {
+    display: block;
+    max-width: 50%;
+    float: left;
+    margin: 2px 1.25em 0 0;
+}
+
+.field-validation-error {
+    color: red;
+}

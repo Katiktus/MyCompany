@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyCompany.Controllers
 {
@@ -15,6 +12,7 @@ namespace MyCompany.Controllers
         {
             this.dataManager = dataManager;
         }
+
         public IActionResult Index(Guid id)
         {
             if(id != default)

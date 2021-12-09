@@ -1,0 +1,14 @@
+﻿@model NewsItem
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
+}
+<div>
+    <h1>@Model.Title</h1>
+    <h2>@Model.Subtitle</h2>
+    <h2>@Model.DateAdded</h2>
+</div>
+<div>@Html.Raw(Model.Text)</div>

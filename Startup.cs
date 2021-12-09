@@ -24,6 +24,7 @@ namespace MyCompany
 
             services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
             services.AddTransient<IServiceItemsRepository, EFServiceItemsRepository>();
+            services.AddTransient<INewsItemsRepository, EFNewsItemsRepository>();
             services.AddTransient<DataManager>();
 
             services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionString));

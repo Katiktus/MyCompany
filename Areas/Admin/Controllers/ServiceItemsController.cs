@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using MyCompany.Domain;
 using MyCompany.Domain.Entities;
 using MyCompany.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MyCompany.Domain.Repositories;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
@@ -42,11 +38,11 @@ namespace MyCompany.Areas.Admin.Controllers
                     {
                         titleImageFile.CopyTo(stream);
                     }
-                }
-            dataManager.ServiceItems.SaveServiceItem(model);
+                } 
+                dataManager.ServiceItems.SaveServiceItem(model);
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
-            }
-        return View(model);
+            } 
+            return View(model);
         }
 
         [HttpPost]

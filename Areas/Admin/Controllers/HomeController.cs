@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyCompany.Areas.Admin.Controllers
 {
@@ -19,7 +15,9 @@ namespace MyCompany.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(dataManager.ServiceItems.GetServiceItems());
+            ViewData["ServiceItems"] = dataManager.ServiceItems.GetServiceItems();
+            ViewData["NewsItems"] = dataManager.NewsItems.GetNewsItems();
+            return View();
         }
     }
 }

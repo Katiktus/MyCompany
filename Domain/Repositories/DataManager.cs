@@ -1,8 +1,4 @@
 ﻿using MyCompany.Domain.Repositories.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyCompany.Domain.Repositories
 {
@@ -11,10 +7,13 @@ namespace MyCompany.Domain.Repositories
         public ITextFieldsRepository TextFields { get; set; }
         public IServiceItemsRepository ServiceItems { get; set; }
 
-        public DataManager(ITextFieldsRepository textFieldsRepository, IServiceItemsRepository serviceItemsRepository)
+        public INewsItemsRepository NewsItems { get; set; }
+
+        public DataManager(ITextFieldsRepository textFieldsRepository, IServiceItemsRepository serviceItemsRepository, INewsItemsRepository newsItemsRepository)
         {
             TextFields = textFieldsRepository;
             ServiceItems = serviceItemsRepository;
+            NewsItems = newsItemsRepository;
         }
     }
 }

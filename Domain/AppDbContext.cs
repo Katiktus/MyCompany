@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyCompany.Domain
 {
@@ -15,6 +12,7 @@ namespace MyCompany.Domain
 
         public DbSet<TextField> TextFields { get; set; }
         public DbSet<ServiceItem> ServiceItems { get; set; }
+        public DbSet<NewsItem> NewsItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,8 +30,8 @@ namespace MyCompany.Domain
                 Id = "d6812dc5-6576-481a-848c-33f7baa631f7",
                 UserName = "admin",
                 NormalizedUserName = "ADMIN",
-                Email = "my@email.com",
-                NormalizedEmail = "MY@EMAIL.COM",
+                Email = "katpog2001@gmail.com",
+                NormalizedEmail = "KATPOG2001@GMAIL.COM",
                 EmailConfirmed = true,
                 PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "superpassword"),
                 SecurityStamp = string.Empty
@@ -64,6 +62,13 @@ namespace MyCompany.Domain
                 Id = new Guid("6b5cf1f2-a258-413d-b0e1-2a2543d166ca"),
                 CodeWord = "PageContacts",
                 Title = "Контакты"
+            });
+
+            modelBuilder.Entity<TextField>().HasData(new TextField
+            {
+                Id = new Guid("58b650cb-4d3d-4603-bc1f-b1a91bc08be4"),
+                CodeWord = "PageNews",
+                Title = "Новости"
             });
         }
     }

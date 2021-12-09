@@ -2,10 +2,6 @@
 using MyCompany.Domain.Entities;
 using MyCompany.Domain.Repositories;
 using MyCompany.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyCompany.Areas.Admin.Controllers
 {
