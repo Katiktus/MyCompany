@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Domain.Entities;
+using MyCompany.Domain.Repositories.Abstract;
 
 namespace MyCompany.Domain.Repositories.EntityFramework
 {

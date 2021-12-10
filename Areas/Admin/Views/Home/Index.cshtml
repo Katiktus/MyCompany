@@ -4,6 +4,7 @@
     ViewBag.Title = strTitle;
     IQueryable<NewsItem> newsItems = ViewData["NewsItems"] as IQueryable<NewsItem>;
     IQueryable<ServiceItem> serviceItems = ViewData["ServiceItems"] as IQueryable<ServiceItem>;
+    IQueryable<Message> messages = ViewData["Messages"] as IQueryable<Message>;
 }
 
 <div>
@@ -36,18 +37,36 @@
         <div>
             @foreach (NewsItem entity in newsItems)
             {
-            <div>
-                |
-                <form style="display: inline-block;" id="form-@entity.Id" >
-                <input type="hidden" name="id" value="@entity.Id">
-                <a  asp-area="Admin" asp-controller="NewsItems" asp-action="Delete" onclick="document.getElementById('form-@entity.Id').submit();">удалить</a>
-                <a asp-area="Admin" asp-controller="NewsItems" asp-action="Approve" onclick="document.getElementById('form-@entity.Id').submit();">одобрено</a>
-                <a asp-area="Admin" asp-controller="NewsItems" asp-action="Disapprove" onclick="document.getElementById('form-@entity.Id').submit();">не одобрено</a>
-                </form>
-                <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
-                    @($"{entity.Title}")
-                </a>
-            </div>
+                <div>
+
+                    <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="NewsItems" method="post">
+                        <input type="hidden" name="id" value="@entity.Id">
+                        <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Disapprove">Не одобрено</button>
+                        <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Approve">Одобрено</button>
+                        <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Delete">Удалить</button>
+                    </form>
+                    <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">
+                        @($"{entity.Title}")
+                    </a>
+                </div>
+            }
+        </div>
+        <h3>Сообщения</h3>
+        <div>
+            @foreach (Message entity in messages)
+            {
+                <div>
+                    <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="Message" method="post">
+                        <input type="hidden" name="id" value="@entity.Id">
+                        <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="Message" asp-action="Delete">Удалить</button>
+                    </form>
+                    <a asp-area="" asp-controller="Message" asp-action="Index" asp-route-id="@entity.Id">
+                        @($"{entity.Title}")
+                        @($"{entity.From}")
+                        @(entity.Text)
+                        @($"{entity.DateAdded}")
+                    </a>
+                </div>
             }
         </div>
         <div class="div-box">

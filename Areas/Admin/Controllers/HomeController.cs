@@ -17,6 +17,7 @@ namespace MyCompany.Areas.Admin.Controllers
         {
             ViewData["ServiceItems"] = dataManager.ServiceItems.GetServiceItems();
             ViewData["NewsItems"] = dataManager.NewsItems.GetNewsItems();
+            ViewData["Messages"] = dataManager.Messages.GetMessages();
             return View();
         }
     }

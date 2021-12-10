@@ -2,7 +2,7 @@
 using System.Linq;
 using MyCompany.Domain.Entities;
 
-namespace MyCompany.Domain.Repositories
+namespace MyCompany.Domain.Repositories.Abstract
 {
     public interface INewsItemsRepository
     {

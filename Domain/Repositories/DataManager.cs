@@ -9,11 +9,15 @@ namespace MyCompany.Domain.Repositories
 
         public INewsItemsRepository NewsItems { get; set; }
 
-        public DataManager(ITextFieldsRepository textFieldsRepository, IServiceItemsRepository serviceItemsRepository, INewsItemsRepository newsItemsRepository)
+        public IMessagesRepository Messages { get; set; }
+
+        public DataManager(ITextFieldsRepository textFieldsRepository,
+            IServiceItemsRepository serviceItemsRepository, INewsItemsRepository newsItemsRepository, IMessagesRepository messagesRepository)
         {
             TextFields = textFieldsRepository;
             ServiceItems = serviceItemsRepository;
             NewsItems = newsItemsRepository;
+            Messages = messagesRepository;
         }
     }
 }

@@ -1,0 +1,22 @@
+﻿@model IQueryable<Message>
+@{ 
+    TextField textField = ViewBag.TextField;
+}
+
+<div>
+    @if (Model.Any())
+    {
+        <ul>
+            @foreach (Message entity in Model)
+            {
+                <li>
+                        <a asp-area="" asp-controller="Message" asp-action="Index" asp-route-id="@entity.Id" />
+                        <h4>@entity.Title</h4>
+                        <h4>@entity.From</h4>
+                        <p>@entity.Text</p>
+                        <h4>@entity.DateAdded</h4>
+                    </li>
+                }
+        </ul>
+    }
+</div>

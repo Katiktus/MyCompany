@@ -16,7 +16,7 @@ namespace MyCompany.Controllers
             this.dataManager = dataManager;
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpGet]
+        [HttpGet]
         public bool IsExist(string Title)
         {
             if (dataManager.NewsItems.GetNewsItemByTitle(Title) != null) 
@@ -41,7 +41,7 @@ namespace MyCompany.Controllers
             return View(entity);
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpPost]
+        [HttpPost]
         public IActionResult Edit(NewsItem model)
         {
             if(IsExist(model.Title))

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Domain.Repositories;
 using System;
+using MyCompany.Areas.Admin.Service;
 using MyCompany.Service;
 
 namespace MyCompany.Areas.Admin.Controllers
@@ -17,7 +18,7 @@ namespace MyCompany.Areas.Admin.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Approve(Guid id)
         {
             var result = dataManager.NewsItems.GetNewsItemById(id);
@@ -26,11 +27,16 @@ namespace MyCompany.Areas.Admin.Controllers
                 result.IsApproved = true;
                 dataManager.NewsItems.SaveNewsItem(result);
             }
+            if (result.Author != null)
+            {
+                EmailService emailService = new EmailService();
+                emailService.SendEmail(result.Author, "Результаты рецензии", "Ваша новость была одобрена");
+            }
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }
 
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Disapprove(Guid id)
         {
             var result = dataManager.NewsItems.GetNewsItemById(id);
@@ -38,6 +44,11 @@ namespace MyCompany.Areas.Admin.Controllers
             {
                 result.IsApproved = false;
                 dataManager.NewsItems.SaveNewsItem(result);
+            }
+            if (result.Author != null)
+            {
+                EmailService emailService = new EmailService();
+                emailService.SendEmail(result.Author, "Результаты рецензии", "Ваша новость не была одобрена");
             }
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }

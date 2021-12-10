@@ -15,6 +15,9 @@ namespace MyCompany.Domain.Entities
         [Display(Name = "Полное содержание новости")]
         public override string Text { get; set; }
 
+        [Display(Name = "Ваш email для получения обратной связи")]
+        public string Author { get; set; }
+
         public bool IsApproved { get; set; }
     }
 
