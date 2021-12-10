@@ -25,6 +25,7 @@ namespace MyCompany.Areas.Admin.Controllers
             if (result != null)
             {
                 result.IsApproved = true;
+                result.IsChanged = true;
                 dataManager.NewsItems.SaveNewsItem(result);
             }
             if (result.Author != null)
@@ -43,6 +44,7 @@ namespace MyCompany.Areas.Admin.Controllers
             if (result != null)
             {
                 result.IsApproved = false;
+                result.IsChanged = true;
                 dataManager.NewsItems.SaveNewsItem(result);
             }
             if (result.Author != null)

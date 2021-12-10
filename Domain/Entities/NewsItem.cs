@@ -15,10 +15,14 @@ namespace MyCompany.Domain.Entities
         [Display(Name = "Полное содержание новости")]
         public override string Text { get; set; }
 
-        [Display(Name = "Ваш email для получения обратной связи")]
+        [Display(Name = "Email для получения обратной связи")]
+        [Required(ErrorMessage = "Введите email")]
+        [EmailAddress(ErrorMessage = "Неправильный email")]
         public string Author { get; set; }
 
         public bool IsApproved { get; set; }
+
+        public bool IsChanged { get; set; }
     }
 
 }

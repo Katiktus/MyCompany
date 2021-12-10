@@ -41,8 +41,11 @@
 
                     <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="NewsItems" method="post">
                         <input type="hidden" name="id" value="@entity.Id">
-                        <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Disapprove">Не одобрено</button>
-                        <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Approve">Одобрено</button>
+                        @if (!entity.IsChanged)
+                        {
+                            <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Disapprove">Не одобрено</button>
+                            <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Approve">Одобрено</button>
+                        }
                         <button onclick="document.getElementById('form-@entity.Id').submit();" asp-area="Admin" asp-controller="NewsItems" asp-action="Delete">Удалить</button>
                     </form>
                     <a asp-area="" asp-controller="News" asp-action="Index" asp-route-id="@entity.Id">

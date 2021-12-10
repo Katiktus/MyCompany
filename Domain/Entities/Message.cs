@@ -16,6 +16,8 @@ namespace MyCompany.Domain.Entities
         public override string Text { get; set; }
 
         [Display(Name = "Ваш email для получения обратной связи")]
+        [Required(ErrorMessage = "Введите email")]
+        [EmailAddress(ErrorMessage = "Неправильный email")]
         public string From { get; set; }
     }
 }
